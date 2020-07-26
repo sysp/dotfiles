@@ -1,0 +1,130 @@
+configuration {
+    width:            35;
+    hide-scrollbar:   true;
+    font:             "Fira Code Bold 10"; 
+}
+
+* {
+    /** Colors **/
+    foreground: #ffffff;
+    background: #0c0c0c;
+    color1: #4d6d79; /* lblue */
+    color2: #87b05e; /* lgreen */
+
+    selected-normal-foreground:  @foreground;
+    selected-normal-background:  @color1;
+
+    normal-foreground:           @foreground;
+    normal-background:           @background;
+
+    border-color:                @color1;
+    spacing:                     2;
+    background-color:            @background;
+}
+
+#window {
+    background-color: @background;
+    border:           2;
+    padding:          2;
+}
+
+
+#listview {
+    background-color: @background;
+    columns:      2;
+    lines:        3;
+    spacing:      4px;
+    layout:       vertical; 
+    padding:      8;
+}
+
+#message {
+    border:       2px 0px 0px ;
+    border-color: @separatorcolor;
+    padding:      1px ;
+}
+
+#textbox {
+    text-color: @foreground;
+}
+
+#sidebar {
+    border:       4px 0px 0px ;
+    border-color: @separatorcolor;
+}
+
+#button {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+#case-indicator {
+    spacing:    0;
+    text-color:  @foreground;
+    text-color: @normal-foreground;
+}
+
+#entry {
+    text-color:           @foreground;
+    background-color:     @color1;
+    border-radius:        0px 0px 0px;
+    width:                15%;
+    horizontal-align:     0.5;
+    expand:               false;
+    padding:              3px 0px 3px 0px;
+    blink:                true;
+}
+
+#prompt {
+    enabled:    false;
+    padding:    0px 8px 0px 8px;
+    text-color: @normal-foreground;
+}
+
+#inputbar {
+  padding:  5px 5px 5px 180px;
+}
+ 
+#mainbox {
+    children:  [ inputbar,listview ];
+    spacing: 10px;
+    padding: 5px 5px 5px 5px;
+}
+
+
+#element {
+    border-radius:       0px;
+    text-color:   @foreground;
+    orientation:  vertical;
+    margin:       0px 5px 0px 5px;
+    padding:      10px 0px 10px 10px;
+}
+
+#element-icon {
+    size:    64px;
+    border:  0px;
+}
+
+#element-text {
+    expand:              true;
+    horizontal-align:    0.5;
+    vertical-align:      0.5;
+    margin:              5px 10px 0px 10px;
+}
+
+#element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+/* vim:ft=css

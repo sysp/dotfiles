@@ -1,0 +1,261 @@
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+[color]
+fg = #ffffff
+bg = #1e2b30
+red  = #ab4642
+dred = #441c1a
+blue = #6272a4
+lblue = #4d6d79
+black = #0c0c0c
+green = #3d584e
+lgreen = #87b05e
+purple = #45405e
+brain = #c98193
+brown = #3a2121
+dgreen = #1e2c27
+
+[measures]
+padding = 3
+
+[bar/one]
+monitor = ${env:MONITOR:DVI-1}
+bottom = false
+modules-left = bspwm sep2 spotify sep3
+modules-center = calendar weather
+modules-right = usb sep memory filesystem cpu pulseaudio xkeyboard powermenu
+module-margin-left = 0
+module-margin-right = 0
+padding-left = 0
+padding-right = 0
+width = 100%
+height = 27
+wm-restack = bspwm
+override-redirect = false
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskprev
+cursor-click = pointer
+background = ${color.black}
+foreground = ${color.fg}
+fixed-center = true
+enable-ipc = true
+
+font-0 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
+font-1 = "Font Awesome 5 Brands:pixelsize=11;2"
+font-2 = "weather icons:pixelsize=12;2"
+font-3 = FiraCode:size=11;5
+font-4 = Hack Nerd Font:size=10.5:weight=bold;2
+font-5 = Inconsolata Font:pixelsize:10;2
+font-6 = Fantasque Sans Mono:pixelsize=20;1
+font-7 = icomoon:size=11:antialias=true;3
+font-8 = Material Icons:style=Regular:pixelsize=12;4
+
+[module/bspwm]
+type = internal/bspwm
+enable-scroll = true
+enable-click = true
+label-focused = %{T5}%{F#87b05e}%{F-}%{T-} %icon% %{T5}%{F#87b05e}%{F-}%{T-}
+label-focused-foreground = ${color.fg}
+label-focused-background = ${color.black}
+label-urgent = %icon%%{F#ff004b} %{F-}
+label-urgent-background = ${color.black}
+label-occupied-foreground = ${color.fg}
+label-occupied-background = ${color.black}
+label-occupied = %icon%
+label-empty = %icon%
+label-empty-foreground = ${color.fg}
+label-empty-background = ${color.black}
+label-focused-padding = 3
+label-occupied-padding = 3
+label-urgent-padding = 3
+label-empty-padding = 3
+label-locked = %name%
+label-locked-foreground = ${color.red}
+
+ws-icon-0 = 1;%{F#ffffff}%{F-}
+ws-icon-1 = 2;%{F#ee8424}龜%{F-}
+ws-icon-2 = 3;%{F#bb947a}%{F-}
+ws-icon-3 = 4;%{F#298ccd}%{F-}
+ws-icon-4 = 5;%{F#b17ed9}%{F-}
+ws-icon-5 = 6;%{F#c31c4a}%{F-}
+ws-icon-6 = 7;%{F#7eb0ea}%{F-}
+ws-icon-7 = 8;%{F#1db954}%{F-}
+#ws-icon-default = ⭘
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /mnt/hdd
+mount-1 = /home
+interval = 10
+label-mounted = %{F#bbbbbb}%{F-} %{T5} %{F#87b05e}⟪%{F-} %free% %{F#87b05e}⟫%{F-}
+label-mounted-background = ${color.black}
+label-mounted-padding = 1
+label-active-font = 1
+
+[module/sep]
+type = custom/text
+content = "  ⏽"
+content-foreground = ${color.lblue}
+
+[module/sep2]
+type = custom/text
+content = "⟪"
+#content = " "
+content-foreground = ${color.lgreen}
+label-font = 5
+
+[module/sep3]
+type = custom/text
+content = "⟫"
+content-foreground = ${color.lgreen}
+label-font = 5
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+label = %{F#c98193}%{F-} %{T5}%percentage%%
+label-foreground = ${color.fg}
+label-background = ${color.black}
+label-font = 1
+label-padding = ${measures.padding}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %{F#bbbbbb}%{F-} %{T5} %{F#87b05e}⟪%{F-} %mb_used% %{F#87b05e}⟫%{F-}
+label-background = ${color.black}
+label-font = 1
+label-padding = ${measures.padding}
+
+[module/date]
+type = internal/date
+interval = 5
+label-font = 5
+date-alt =%A, %d.%B %Y
+time = %H:%M
+format-prefix = ""
+format-prefix-foreground = #FFFFFF
+label =  %date%  %time%
+label-background = ${color.green}
+label-padding = ${measures.padding}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+use-ui-max = false
+interval = 5
+format-volume = <label-volume>
+format-volume-foreground = ${color.fg}
+label-volume = %{F#ee8424} %{F-} %{T5}%percentage% %
+label-muted = %{F#e5424d}%{F-} %{T5}muted
+label-muted-foreground = ${color.fg}
+label-muted-background = ${color.black}
+label-volume-background = ${color.black}
+label-volume-padding = ${measures.padding}
+label-muted-padding = ${measures.padding}
+
+[module/powermenu]
+type = custom/script
+exec = echo ""
+format-foreground = ${color.brown}
+format-background = ${color.lgreen}
+click-left = ~/.config/polybar/scripts/powermenu.sh
+label-padding = 2
+
+[module/calendar]
+type = custom/script
+exec = ~/.config/polybar/scripts/calendar.sh
+interval = 5
+click-left = ~/.config/polybar/scripts/calendar.sh --popup
+label-font = 5
+label-background = ${color.lblue}
+label-padding = ${measures.padding}
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/sweather.sh
+interval = 600
+label-font = 3
+label-background = ${color.lblue}
+label-padding = ${measures.padding}
+
+[module/title]
+type = internal/xwindow
+label = %title:0:75:...%
+format-background = ${color.green}
+format-padding = 2
+label-font = 5
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format = <label-layout> <label-indicator>
+format-spacing = 0
+label-layout = %{F#bbbbbb}%{F-} %{T5}%layout%
+label-layout-padding = 2
+label-layout-background = ${color.black}
+label-layout-foreground = ${color.fg}
+label-indicator = %name%
+
+[module/usb]
+type = custom/script
+exec = ~/.config/polybar/scripts/usb-mount.sh --check
+tail = true
+click-left = ~/.config/polybar/scripts/usb-mount.sh --mount
+click-right = ~/.config/polybar/scripts/usb-mount.sh --umount
+label-font = 5
+
+[module/spotify]
+type = custom/ipc
+hook-0 = echo ""
+; Playing/paused show song name and artist
+hook-1 = spotifyctl -q status --format ' %artist%: %title% '
+click-left = "spotifyctl -q playpause"
+format-font = 5
+
+[module/previous]
+type = custom/ipc
+format-font = 9
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo ""
+click-left = "spotifyctl -q previous"
+
+[module/next]
+type = custom/ipc
+format-font = 9
+; Default
+hook-0 = echo ""
+; When spotify active
+hook-1 = echo ""
+click-left = "spotifyctl -q next"
+
+[module/playpause]
+type = custom/ipc
+format-font = 9
+; Default
+hook-0 = echo ""
+; Playing
+hook-1 = echo ""
+; Paused
+hook-2 = echo ""
+click-left = "spotifyctl -q playpause"
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+/* vim:ft=css
