@@ -9,6 +9,11 @@
 * Terminal: [Kitty](https://github.com/kovidgoyal/kitty)
 * Shell: [Zsh](http://zsh.sourceforge.net)
 * Panel: [Polybar](https://github.com/polybar/polybar)
-* Editor: [NeoVim](https://github.com/neovim/neovim)
+* Application Launcher: [Rofi](https://github.com/davatorium/rofi)
+* Editor: [Neovim](https://github.com/neovim/neovim)
 * File Manager: [Ranger](https://github.com/ranger/ranger)
 * Web Browser: [Firefox](https://www.mozilla.org/en-US/firefox/new/)
+* Firefox Theme: [minimal-functional-fox](https://github.com/mut-ex/minimal-functional-fox)
+
+### Preview
+![pic1]
