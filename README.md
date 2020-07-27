@@ -1,7 +1,7 @@
 ## sysp dotfiles
 
 ### System info
-![neofetch]()
+![neofetch](https://raw.githubusercontent.com/sysp/dotfiles/master/preview/systeminfo.png)
 
 ### Details
 * OS: [Arch Linux](https://www.archlinux.org)
